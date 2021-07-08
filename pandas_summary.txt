@@ -1,3 +1,11 @@
+Seaborn summary
+sns.barplot(data=df, y="price", x="room_type")
+sns.boxplot(data=df, y="price", x="room_type")
+sns.boxplot(data=df[df.minimum_nights <7], y="number_of_reviews", x="minimum_nights")
+sns.barplot(data=df, x="price", y="room_type", estimator=sum)
+
+df["price_cat"]= pd.cut(df.price, [0, 50, 100, 2000], labels=["Low", "Average", "High"])
+
 Pandas summary
 import pandas as pd
 
@@ -30,8 +38,6 @@ df.loc[df.col_name > 100] # data selection
 df.iloc[row_index]
 df.iloc[row_index, col_index]
 
-df["price_cat"]= pd.cut(df.price, [0, 50, 100, 2000], labels=["Low", "Average", "High"])
-
 Numpy Summary
 np.add(df.col, 10)
 np.divide(),
@@ -58,14 +64,3 @@ np.nan
 
 Numpy Statistics
 https://numpy.org/devdocs/reference/routines.statistics.html
-
-Seaborn summary
-import seaborn as sns
-
-sns.barplot(data=df, y="price", x="room_type")
-sns.boxplot(data=df, y="price", x="room_type")
-sns.boxplot(data=df[df.minimum_nights <7], y="number_of_reviews", x="minimum_nights")
-sns.barplot(data=df, x="price", y="room_type", estimator=sum)
-
-
-

@@ -5,10 +5,11 @@ df = pd.read_csv("filename")
 pd.set_option("display.max_rows", None)
 pd.set_option("display.max_columns", None)
 pd.crosstab(df.col1, df.col2)
+pd.pivot_table(index="room_type", data=df.loc[:, ["price", "room_type"]])
 
 df.index, df.columns, df.values, df.shape, df.dtypes, df.str
-df.head(), df.tail(), df.describe(), df.isnull(), df.corr(), 
-df.mean(), df.median(), df.mode(), df.std(), df.sum(),
+df.head(), df.tail(), df.info(), df.describe(), df.isnull(), df.corr(), 
+df.mean(), df.median(), df.mode(), df.std(), df.sum(),df.pct_change()
 df.min(), df.max(), df.cov(), df.drop(row_index)
 df.duplicated(), df.duplicated(subset="col1"), df.col1.isna()
 df.replace(oldValue, newValue)
@@ -19,7 +20,6 @@ df.unique(), df.nunique()
 df.count()
 df.value_counts()
 df.quantile(0.25)
-df.pivot_table()
 
 df[col_name] / df[[col1, col2]]
 df[col_name][row_index]

@@ -7,6 +7,7 @@ pd.set_option("display.max_columns", None)
 pd.crosstab(df.col1, df.col2)
 pd.pivot_table(index="room_type", data=df.loc[:, ["price", "room_type"]])
 pd.merge(df1, df2, on="colName") 
+pd.concat([df1, df2], axis=0)
 
 df.index, df.columns, df.values, df.shape, df.dtypes, df.str
 df.head(), df.tail(), df.info(), df.describe(), df.isnull(), df.corr(), 

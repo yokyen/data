@@ -6,6 +6,7 @@ pd.set_option("display.max_rows", None)
 pd.set_option("display.max_columns", None)
 pd.crosstab(df.col1, df.col2)
 pd.pivot_table(index="room_type", data=df.loc[:, ["price", "room_type"]])
+pd.merge(df1, df2, on="colName") 
 
 df.index, df.columns, df.values, df.shape, df.dtypes, df.str
 df.head(), df.tail(), df.info(), df.describe(), df.isnull(), df.corr(), 
@@ -34,6 +35,9 @@ df.iloc[row_index]
 df.iloc[row_index, col_index]
 
 df["price_cat"]= pd.cut(df.price, [0, 50, 100, 2000], labels=["Low", "Average", "High"])
+
+df['new_col'] = df.old_col.apply(lambda x: x * 2)
+df["col"] = df.col.map({ 1: "new_data",2: "new_data2"})
 
 Numpy Summary
 np.add(df.col, 10)

@@ -2,6 +2,8 @@ Pandas summary
 import pandas as pd
 
 df = pd.read_csv("filename")
+df2 = pd.read_excel("bank transactions data.xlsx", sheet_name="customer_transactions")
+
 pd.set_option("display.max_rows", None)
 pd.set_option("display.max_columns", None)
 pd.crosstab(df.col1, df.col2)
@@ -70,7 +72,22 @@ https://numpy.org/devdocs/reference/routines.statistics.html
 Seaborn summary
 import seaborn as sns
 
-sns.barplot(data=df, y="price", x="room_type")
+sns.barplot(data=df, y="price", x="room_type", palette="Set2")
+sns.barplot(data=df, x="price", y="room_type", estimator=sum)
 sns.boxplot(data=df, y="price", x="room_type")
 sns.boxplot(data=df[df.minimum_nights <7], y="number_of_reviews", x="minimum_nights")
-sns.barplot(data=df, x="price", y="room_type", estimator=sum)
+sns.lineplot(data=df, y="price", x="minimum_nights")
+sns.lineplot(data=df, y="price", x="minimum_nights", hue="room_type")
+sns.distplot(df.price, color="green", kde=False)
+sns.kdeplot(df.price, color="green", shade=True)
+sns.scatterplot(df.price, df.minimum_nights)
+sns.pairplot(data=df.loc[:, ["price",'minimum_nights','number_of_reviews', 'reviews_per_month',"room_type"]], hue="room_type")
+sns.lmplot(data=df, y="price", x="minimum_nights", hue="room_type")
+sns.swarmplot(data=df, y="price", x="room_type")
+sns.heatmap(df.corr())
+
+import matplotlib.pyplot as plt
+sns.distplot(df[df.room_type == "Private room"].price, label="Private Room", kde=False)
+sns.distplot(df[df.room_type == "Entire home/apt"].price, label="Entire home/apt", kde=False)
+plt.figure(figsize=(20,15))
+plt.legend()

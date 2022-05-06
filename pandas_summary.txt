@@ -1,11 +1,16 @@
 Pandas summary
 import pandas as pd
+import matplotlib.pyplot as plt 
+
+%matplotlib inline
+plt.show() 
+
+pd.set_option("display.max_rows", None)
+pd.set_option("display.max_columns", None)
 
 df = pd.read_csv("filename")
 df2 = pd.read_excel("bank transactions data.xlsx", sheet_name="customer_transactions")
 
-pd.set_option("display.max_rows", None)
-pd.set_option("display.max_columns", None)
 pd.crosstab(df.col1, df.col2)
 pd.pivot_table(index="room_type", data=df.loc[:, ["price", "room_type"]])
 pd.merge(df1, df2, on="colName") 

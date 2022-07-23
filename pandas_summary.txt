@@ -78,7 +78,9 @@ Seaborn summary
 import seaborn as sns
 
 sns.barplot(data=df, y="price", x="room_type", palette="Set2")
-sns.barplot(data=df, x="price", y="room_type", estimator=sum)
+ax = sns.barplot(data=df, x="price", y="room_type", estimator=sum)
+ax.bar_label(ax.containers[0]) # label the bar
+
 sns.boxplot(data=df, y="price", x="room_type")
 sns.boxplot(data=df[df.minimum_nights <7], y="number_of_reviews", x="minimum_nights")
 sns.lineplot(data=df, y="price", x="minimum_nights")
